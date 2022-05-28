@@ -17,9 +17,20 @@ export function BlockList(): JSX.Element {
   }
   
   const showLikedOnly = store.sort.showLikedOnly;
+  const catsList = createCatsList(showLikedOnly ? store.likedCats : store.cats);
   return (
     <div className="BlockList">
-      {createCatsList(showLikedOnly ? store.likedCats : store.cats)}
+      {catsList.length > 0 ? catsList : "Котиков нету ;("}
+      {store.loading ? <Loading /> : null}
+    </div>
+  );
+}
+
+function Loading() {
+  
+  return (
+    <div className='Loading'>
+      ...загружаем котиков
     </div>
   );
 }

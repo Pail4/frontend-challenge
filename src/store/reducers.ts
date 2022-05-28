@@ -1,4 +1,5 @@
 import { createAction, createAsyncThunk, createReducer } from "@reduxjs/toolkit";
+import { catsAPI } from "../API";
 import { store, cat, sort } from "./interfaces";
 
 const defaultStore: store = {
@@ -17,9 +18,9 @@ export const dislikeCat = createAction('DISLIKE_CAT', withPayloadType<cat>());
 export const addCat = createAction('ADD_CAT', withPayloadType<cat>());
 export const changeSort = createAction('CHANGE_SORT', withPayloadType<sort["showLikedOnly"]>());
 
-export const fetchCats = createAsyncThunk('FETCH_CATS', async(key: string) => {
-  const url = 'https://api.thecatapi.com/v1/images/search?limit=20&order=asc&size=full';
-  const response = await fetch(url, { headers: {"X-Api-Key" : key} });
+export const fetchCats = createAsyncThunk('FETCH_CATS', async() => {
+  const url = catsAPI.getUrl();
+  const response = await fetch(url, { headers: {"X-Api-Key" : 'ffcb565d-366b-4b2d-8326-388c4b9c40e6' } });
   const data = await response.json();
   return data;
 });
@@ -46,15 +47,14 @@ export const reducer = createReducer(defaultStore, (builder) => {
       state.loading = true;
     })
     .addCase(fetchCats.fulfilled, (state, action) => {
-      console.log(action.payload);
-      state.cats = action.payload.map(({ id, url }: { id: number | string, url: URL }) => {
+      state.cats = state.cats.concat(action.payload.map(({ id, url }: { id: number | string, url: URL }) => {
         const isLiked = !!state.likedCats.find((item) => item.id === id);
         return {
           id: id,
           image: url,
           isLiked
         } as cat;
-      });
+      }));
       state.loading = false;
     })
     .addCase(changeSort, (state, action) => {
