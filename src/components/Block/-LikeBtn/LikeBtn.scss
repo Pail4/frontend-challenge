@@ -5,7 +5,11 @@
   height: 48px;
   background: url(./Like.svg) center no-repeat;
 
-  &:hover {
+  &:hover, &_liked {
     background: url(./Liked.svg) center no-repeat;
   }
+}
+
+.Block-LikeBtn_liked:hover {
+  background: url(./Like.svg) center no-repeat;
 }
