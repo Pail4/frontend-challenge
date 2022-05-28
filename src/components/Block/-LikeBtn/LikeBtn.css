@@ -1,0 +1,12 @@
+.Block-LikeBtn {
+  display: none;
+  margin: 0 15px 15px 0;
+  width: 48px;
+  height: 48px;
+  background: url(./Like.svg) center no-repeat;
+}
+
+.Block-LikeBtn:hover {
+  background: url(./Liked.svg) center no-repeat;
+}
+/*# sourceMappingURL=LikeBtn.css.map */
