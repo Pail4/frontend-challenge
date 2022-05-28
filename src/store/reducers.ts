@@ -1,5 +1,5 @@
 import { createAction, createAsyncThunk, createReducer } from "@reduxjs/toolkit";
-import { store, cat } from "./interfaces";
+import { store, cat, sort } from "./interfaces";
 
 const defaultStore: store = {
   sort: {showLikedOnly: false},
@@ -12,9 +12,10 @@ function withPayloadType<T>() {
   return (t: T) => ({ payload: t });
 }
 
-const likeCat = createAction('LIKE_CAT', withPayloadType<cat>());
-const dislikeCat = createAction('DISLIKE_CAT', withPayloadType<cat["id"]>());
-const addCat = createAction('ADD_CAT', withPayloadType<cat>());
+export const likeCat = createAction('LIKE_CAT', withPayloadType<cat>());
+export const dislikeCat = createAction('DISLIKE_CAT', withPayloadType<cat>());
+export const addCat = createAction('ADD_CAT', withPayloadType<cat>());
+export const changeSort = createAction('CHANGE_SORT', withPayloadType<sort["showLikedOnly"]>());
 
 export const fetchCats = createAsyncThunk('FETCH_CATS', async(key: string) => {
   const url = 'https://api.thecatapi.com/v1/images/search?limit=20&order=asc&size=full';
@@ -26,11 +27,17 @@ export const fetchCats = createAsyncThunk('FETCH_CATS', async(key: string) => {
 export const reducer = createReducer(defaultStore, (builder) => {
   builder
     .addCase(likeCat, (state, action) => {
-      state.likedCats.push(action.payload);
+      const newCat: cat = Object.assign({}, action.payload);
+      newCat.isLiked = true;
+      state.likedCats.push(newCat);
+      state.cats = state.cats.map((oldCat) => oldCat.id === newCat.id ? newCat : oldCat);
     })
     .addCase(dislikeCat, (state, action) => {
-      const catIndex = state.likedCats.findIndex((cat) => cat.id === action.payload);
+      const newCat: cat = Object.assign({}, action.payload);
+      newCat.isLiked = false;
+      const catIndex = state.likedCats.findIndex((cat) => cat.id === newCat.id);
       state.likedCats.splice(catIndex, 1);
+      state.cats = state.cats.map((oldCat) => oldCat.id === newCat.id ? newCat : oldCat);
     })
     .addCase(addCat, (state, action) => {
       state.cats.push(action.payload);
@@ -40,7 +47,7 @@ export const reducer = createReducer(defaultStore, (builder) => {
     })
     .addCase(fetchCats.fulfilled, (state, action) => {
       console.log(action.payload);
-      state.cats = action.payload.map(({id, url}) => {
+      state.cats = action.payload.map(({ id, url }: { id: number | string, url: URL }) => {
         const isLiked = !!state.likedCats.find((item) => item.id === id);
         return {
           id: id,
@@ -49,5 +56,8 @@ export const reducer = createReducer(defaultStore, (builder) => {
         } as cat;
       });
       state.loading = false;
+    })
+    .addCase(changeSort, (state, action) => {
+      state.sort.showLikedOnly = action.payload;
     });
 });

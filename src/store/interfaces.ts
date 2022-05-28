@@ -14,3 +14,7 @@ export interface store {
   cats: cat[],
   loading: boolean
 }
+
+export interface storage {
+  store: store
+}

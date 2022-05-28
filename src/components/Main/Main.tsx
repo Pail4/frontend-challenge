@@ -1,8 +1,9 @@
 import './Main.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Wrapper } from '../Wrapper/Wrapper';
 import { BlockList } from '../BlockList/BlockList';
+import { useDispatch } from 'react-redux';
 
 export function Main(): JSX.Element {
   
