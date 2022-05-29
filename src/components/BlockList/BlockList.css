@@ -1,9 +1,10 @@
 .BlockList {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(225px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  -ms-grid-columns: (minmax(225px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
   grid-gap: 48px;
+  justify-items: center;
   grid-auto-flow: dense;
   padding-top: 48px;
 }

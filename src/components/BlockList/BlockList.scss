@@ -1,7 +1,8 @@
 .BlockList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
   grid-gap: 48px;
+  justify-items: center;
   grid-auto-flow: dense;
   padding-top: 48px;
 }
