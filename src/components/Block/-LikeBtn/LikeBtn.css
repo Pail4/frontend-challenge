@@ -4,13 +4,16 @@
   width: 48px;
   height: 48px;
   background: url(./Like.svg) center no-repeat;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
 }
 
-.Block-LikeBtn:hover, .Block-LikeBtn_liked {
+.Block-LikeBtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.Block-LikeBtn_liked {
   background: url(./Liked.svg) center no-repeat;
-}
-
-.Block-LikeBtn_liked:hover {
-  background: url(./Like.svg) center no-repeat;
 }
 /*# sourceMappingURL=LikeBtn.css.map */
