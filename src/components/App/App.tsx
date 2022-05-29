@@ -15,7 +15,8 @@ export function App() {
     const div = event.target;
     const bot = div.getBoundingClientRect().bottom;
     const diff = div.scrollHeight - div.scrollTop - bot;
-    if (diff < 5) {
+    const state = store.getState().store;
+    if (diff < 5 && !state.sort.showLikedOnly && !state.loading) {
       store.dispatch(fetchCats());
     }
   }
