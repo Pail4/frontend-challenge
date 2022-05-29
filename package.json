@@ -1,11 +1,14 @@
 {
   "name": "frontend-challenge",
+  "homepage": "https://pail4.github.io/frontend-challenge",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
@@ -21,6 +24,7 @@
     "@vitejs/plugin-react": "^1.3.0",
     "eslint": "^8.16.0",
     "eslint-plugin-react": "^7.30.0",
+    "gh-pages": "^4.0.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.9"
   }
