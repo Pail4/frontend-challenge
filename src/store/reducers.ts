@@ -1,13 +1,7 @@
 import { createAction, createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import { catsAPI } from "../API";
-import { store, cat, sort } from "./interfaces";
-
-const defaultStore: store = {
-  sort: {showLikedOnly: false},
-  likedCats: [],
-  cats: [],
-  loading: false
-};
+import { cat, sort } from "./interfaces";
+import { defaultStore } from "./localStore";
 
 function withPayloadType<T>() {
   return (t: T) => ({ payload: t });
