@@ -2,6 +2,7 @@
   "name": "frontend-challenge",
   "private": true,
   "version": "0.0.0",
+  "main": "https://pail4.github.io/frontend-challenge/",
   "homepage": "https://pail4.github.io/frontend-challenge/",
   "scripts": {
     "dev": "vite",
