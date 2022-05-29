@@ -1,8 +1,8 @@
 {
   "name": "frontend-challenge",
-  "homepage": "https://pail4.github.io/frontend-challenge",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://pail4.github.io/frontend-challenge/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
