@@ -1,3 +1,10 @@
 .Wrapper {
   padding: 0 62px;
 }
+
+
+@media (max-width: 620px) {
+  .Wrapper {
+    padding: 0 10px;
+  }
+}

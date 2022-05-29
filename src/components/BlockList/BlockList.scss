@@ -6,3 +6,10 @@
   grid-auto-flow: dense;
   padding-top: 48px;
 }
+
+
+@media (max-width: 620px) {
+  .BlockList {
+    grid-gap: 20px;
+  }
+}
