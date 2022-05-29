@@ -1,20 +1,20 @@
 export interface cat {
-  id: number
-  image: URL,
-  isLiked: boolean
+  id: number;
+  image: URL;
+  isLiked: boolean;
 }
 
 export interface sort {
-  showLikedOnly: boolean
+  showLikedOnly: boolean;
 }
 
 export interface store {
-  sort: sort,
-  likedCats: cat[],
-  cats: cat[],
-  loading: boolean
+  sort: sort;
+  likedCats: cat[];
+  cats: cat[];
+  loading: boolean;
 }
 
 export interface storage {
-  store: store
+  store: store;
 }
