@@ -21,16 +21,6 @@ export function BlockList(): JSX.Element {
   return (
     <div className="BlockList">
       {catsList.length > 0 ? catsList : "Котиков нету ;("}
-      {store.loading ? <Loading /> : null}
-    </div>
-  );
-}
-
-function Loading() {
-  
-  return (
-    <div className='Loading'>
-      ...загружаем котиков
     </div>
   );
 }
