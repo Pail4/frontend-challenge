@@ -17,7 +17,7 @@ export function BlockList(): JSX.Element {
   const catsList = createCatsList(showLikedOnly ? store.likedCats : store.cats);
   return (
     <div className="BlockList">
-      {catsList.length > 0 ? catsList : "Котиков нету ;("}
+      {catsList.length > 0 ? catsList : "Котиков нету 3:"}
     </div>
   );
 }

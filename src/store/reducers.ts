@@ -65,6 +65,10 @@ export const reducer = createReducer(defaultStore, (builder) => {
         })
       );
       state.loading = false;
+      state.error = null;
+    })
+    .addCase(fetchCats.rejected, (state, action) => {
+      state.error = action.error;
     })
     .addCase(changeSort, (state, action) => {
       state.sort.showLikedOnly = action.payload;

@@ -28,4 +28,5 @@ export const defaultStore: store = {
   likedCats: localStore.getLikedCats(),
   cats: [],
   loading: false,
+  error: null
 };

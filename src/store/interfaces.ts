@@ -1,3 +1,5 @@
+import { SerializedError } from "@reduxjs/toolkit";
+
 export interface cat {
   id: number;
   image: URL;
@@ -13,6 +15,7 @@ export interface store {
   likedCats: cat[];
   cats: cat[];
   loading: boolean;
+  error: Error | SerializedError | null;
 }
 
 export interface storage {

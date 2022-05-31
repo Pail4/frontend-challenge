@@ -41,5 +41,3 @@ export function Block({ cat }: { cat: cat }): JSX.Element {
     </div>
   );
 }
-
-//<img src={cat.image} alt="sweety-kitty" className='Block-Img' />
